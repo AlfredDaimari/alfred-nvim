@@ -4,12 +4,11 @@ local default_opts = { noremap = true, silent= true }
 local expr_opts = { noremap = true, expr = true, silent = true }
 
 -- Better escape using jk in insert and terminal mode
--- Better escape using jk in insert and terminal mode
-map("i", "jk", "<ESC>", default_opts)
-map("t", "jk", "<C-\\><C-n>", default_opts)
+--map("i", "<M-i>", "<ESC>", default_opts)
+--map("t", "<M-i>", "<C-\\><C-n>", default_opts)
 
 
-map('n', '<Space>',   '<NOP>', default_opts)
+map('n', '<Space>', '<NOP>', default_opts)
 
 -- To Prove that I'm a real vimmer
 map('n', '<Up>', '<Nop>', default_opts)
@@ -36,10 +35,11 @@ map('n', '<M-k>',     '<cmd>resize -2<CR>', {silent = true})
 
 -- For file searching at crtl + p
 
-map('n', '<c-P>', "<cmd>lua require('fzf-lua').files()<CR>",
+map('n', '<C-P>', "<cmd>lua require('fzf-lua').files()<CR>",
         { 
                 noremap = true, silent = true 
         }
 )
 
-
+-- new tab remapping
+map('n', '<S-t>', '<cmd>tabnew<CR>', {silent = true})
