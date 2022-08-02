@@ -15,3 +15,4 @@ require('plugins')      -- Plugins
 -- setup must be called before loading
 vim.cmd("colorscheme duskfox")
 vim.cmd("set cursorline")
+

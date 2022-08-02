@@ -43,3 +43,7 @@ map('n', '<C-P>', "<cmd>lua require('fzf-lua').files()<CR>",
 
 -- new tab remapping
 map('n', '<S-t>', '<cmd>tabnew<CR>', {silent = true})
+
+
+-- new mappings for code completion
+

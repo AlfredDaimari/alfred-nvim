@@ -60,6 +60,15 @@ return packer.startup( function (use)
                 },
                 config = function() require("plugins.lualine") end
        }
+
+       -- TreeSitter
+        use {
+                'nvim-treesitter/nvim-treesitter',
+                event = { 'BufRead', 'BufNewFile' },
+                -- run = ':TSUpdate',
+                config = function() require("plugins.treesitter") end
+  }
+
        use { 
                'ibhagwan/fzf-lua',
                 requires = { 
@@ -73,6 +82,18 @@ return packer.startup( function (use)
                 "lukas-reineke/indent-blankline.nvim",
                 config = function() require("plugins.blankline") end 
         }
-end
+
+        -- LSP
+        use {
+                "neovim/nvim-lspconfig",
+                opt = true,
+                event = "BufReadPre",
+                wants = { "nvim-lsp-installer" },
+                config = function() require("config.lsp").setup() end,
+                requires = {
+                                "williamboman/nvim-lsp-installer",
+                        },
+        }
+        end
 )
 
