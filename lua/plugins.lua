@@ -63,17 +63,26 @@ return packer.startup( function (use)
 
        -- TreeSitter
         use {
-                'nvim-treesitter/nvim-treesitter',
-                event = { 'BufRead', 'BufNewFile' },
-                -- run = ':TSUpdate',
+                "nvim-treesitter/nvim-treesitter",
+                run = ":TSUpdate",
                 config = function() require("plugins.treesitter") end
-  }
+        }
 
-       use { 
+        use { 
                'ibhagwan/fzf-lua',
                 requires = { 
                         'kyazdani42/nvim-web-devicons' 
                 },
+        }
+
+        use {
+                "folke/which-key.nvim",
+                config = function()
+                require("which-key").setup {
+                        -- your configuration comes here
+                        -- or leave it empty to use the default settings
+                        -- refer to the configuration section below
+                } end
         }
 
         use "EdenEast/nightfox.nvim"
@@ -84,16 +93,7 @@ return packer.startup( function (use)
         }
 
         -- LSP
-        use {
-                "neovim/nvim-lspconfig",
-                opt = true,
-                event = "BufReadPre",
-                wants = { "nvim-lsp-installer" },
-                config = function() require("config.lsp").setup() end,
-                requires = {
-                                "williamboman/nvim-lsp-installer",
-                        },
-        }
+        use "neovim/nvim-lspconfig"
 
         -- auto completion
         -- CMP
@@ -102,6 +102,7 @@ return packer.startup( function (use)
         use 'hrsh7th/cmp-buffer' -- buffer completions
         use 'hrsh7th/cmp-path' -- path completions
         use 'hrsh7th/cmp-cmdline' -- cmdline completions
+        
         end
 )
 

@@ -2,8 +2,8 @@ local M = {}
 
 -- Find a file either using git files or search the filesystem.
 function M.find_files()
-  local fzf = require fzf-lua
-  if vim.fn.system git rev-parse --is-inside-work-tree == true then
+  local fzf = require "fzf-lua"
+  if vim.fn.system "git rev-parse --is-inside-work-tree" == true then
     fzf.git_files()
   else
     fzf.files()
@@ -22,9 +22,9 @@ function M.find_buffers()
     end
   end
 
-  vim.ui.select(results, { prompt = Find buffer: }, function(selected)
+  vim.ui.select(results, { prompt = "Find buffer:" }, function(selected)
     if selected then
-      vim.api.nvim_command(buffer  .. selected)
+      vim.api.nvim_command("buffer " .. selected)
     end
   end)
 end
