@@ -30,95 +30,78 @@ packer.init {
 }
 
 
-return packer.startup( function (use)
-        use 'wbthomason/packer.nvim'
-          -- File Tree
-        use {
+return packer.startup( 
+        function (use)
+                use 'wbthomason/packer.nvim'
+                        -- File Tree
+                use {
                 'kyazdani42/nvim-tree.lua',
-                requires = {
-                        'kyazdani42/nvim-web-devicons', -- optional, for file icons
-                },
-                keys = {"<C-b>"},
-                cmd = {
-                        "NvimTreeToggle",
-                        "NvimTreeOpen",
-                        "NvimTreeClose",
-                        "NvimTreeFocus",
-                        "NvimTreeFindFileToggle",
-                        "NvimTreeResize",
-                        "NvimTreeCollapse",
-                        "NvimTreeCollapseKeepBuffers",
-                        "NvimTreeRefresh",
-                        "NvimTreeFindFile"
-                },
-                config = function() require("plugins.nvimtree") end
-        }
-        use {
-                'nvim-lualine/lualine.nvim',
-                requires = { 
-                        'kyazdani42/nvim-web-devicons', opt = true 
-                },
-                config = function() require("plugins.lualine") end
-       }
+                        requires = {
+                                'kyazdani42/nvim-web-devicons', -- optional, for file icons
+                        },
+                        keys = {"<C-b>"},
+                        cmd = {
+                                "NvimTreeToggle",
+                                "NvimTreeOpen",
+                                "NvimTreeClose",
+                                "NvimTreeFocus",
+                                "NvimTreeFindFileToggle",
+                                "NvimTreeResize",
+                                "NvimTreeCollapse",
+                                "NvimTreeCollapseKeepBuffers",
+                                "NvimTreeRefresh",
+                                "NvimTreeFindFile"
+                        },
+                        config = function() require("plugins.nvimtree") end
+                }   
+                 use {
+                        'nvim-lualine/lualine.nvim',
+                        requires = { 
+                                'kyazdani42/nvim-web-devicons', opt = true 
+                        },
+                        config = function() require("plugins.lualine") end
+                }    
 
-       -- TreeSitter
-        use {
-                "nvim-treesitter/nvim-treesitter",
-                run = ":TSUpdate",
-                config = function() require("plugins.treesitter") end
-        }
+                -- TreeSitter
+                use {
+                        "nvim-treesitter/nvim-treesitter",
+                        run = ":TSUpdate",
+                        config = function() require("plugins.treesitter") end
+                }
 
-        use { 
-               'ibhagwan/fzf-lua',
-                requires = { 
-                        'kyazdani42/nvim-web-devicons' 
-                },
-        }
+                use { 
+                        'ibhagwan/fzf-lua',
+                        requires = { 
+                                'kyazdani42/nvim-web-devicons' 
+                        },
+                }
 
-        use {
-                "folke/which-key.nvim",
-                config = function()
-                require("which-key").setup {
-                        -- your configuration comes here
-                        -- or leave it empty to use the default settings
-                        -- refer to the configuration section below
-                } end
-        }
+                use {
+                        "folke/which-key.nvim",
+                        config = function()
+                        require("which-key").setup {
+                                -- your configuration comes here
+                                -- or leave it empty to use the default settings
+                                -- refer to the configuration section below
+                        } end
+                }
 
-        use "EdenEast/nightfox.nvim"
+                use "EdenEast/nightfox.nvim"
 
-        use {
-                "lukas-reineke/indent-blankline.nvim",
-                config = function() require("plugins.blankline") end 
-        }
+                use {
+                        "lukas-reineke/indent-blankline.nvim",
+                        config = function() require("plugins.blankline") end 
+                }
+                
+                -- lsp
+                use "neovim/nvim-lspconfig"
 
-        -- LSP
-        use {
-                "neovim/nvim-lspconfig",
-                event = "BufReadPre",
-                config = function() require("lsp") end
-        }
-
-        use {
-                'williamboman/nvim-lsp-installer',
-                cmd = {
-                        "LspInstall",
-                        "LspInstallInfo",
-                        "LspUninstall",
-                        "LspUninstallAll",
-                        "LspInstallLog",
-                        "LspPrintInstalled",
-                },
-} -- simple to use language server installer
-
-        -- auto completion
-        -- CMP
-        use 'hrsh7th/nvim-cmp' -- The completion plugin
-        use 'hrsh7th/cmp-nvim-lsp'
-        use 'hrsh7th/cmp-buffer' -- buffer completions
-        use 'hrsh7th/cmp-path' -- path completions
-        use 'hrsh7th/cmp-cmdline' -- cmdline completions
-        
+                -- cmp
+                use 'hrsh7th/nvim-cmp' -- The completion plugin
+                use 'hrsh7th/cmp-nvim-lsp'
+                use 'hrsh7th/cmp-buffer' -- buffer completions
+                use 'hrsh7th/cmp-path' -- path completions
+                use 'hrsh7th/cmp-cmdline' -- cmdline completions
         end
 )
 
