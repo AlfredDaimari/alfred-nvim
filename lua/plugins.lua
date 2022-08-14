@@ -93,7 +93,23 @@ return packer.startup( function (use)
         }
 
         -- LSP
-        use "neovim/nvim-lspconfig"
+        use {
+                "neovim/nvim-lspconfig",
+                event = "BufReadPre",
+                config = function() require("lsp") end
+        }
+
+        use {
+                'williamboman/nvim-lsp-installer',
+                cmd = {
+                        "LspInstall",
+                        "LspInstallInfo",
+                        "LspUninstall",
+                        "LspUninstallAll",
+                        "LspInstallLog",
+                        "LspPrintInstalled",
+                },
+} -- simple to use language server installer
 
         -- auto completion
         -- CMP
