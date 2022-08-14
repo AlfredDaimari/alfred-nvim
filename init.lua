@@ -11,6 +11,7 @@ require('vars')      -- Variables
 require('opts')      -- Options
 require('keys')      -- Keymaps
 require('plugins')      -- Plugins
+require('lsp')       -- auto code completion   
 
 -- setup must be called before loading
 vim.cmd("colorscheme duskfox")

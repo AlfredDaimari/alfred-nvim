@@ -1,4 +1,4 @@
-ocal status_ok, nvim_lsp = pcall(require, "lspconfig")
+local status_ok, nvim_lsp = pcall(require, "lspconfig")
 if not status_ok then return end
 
 local stat_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
