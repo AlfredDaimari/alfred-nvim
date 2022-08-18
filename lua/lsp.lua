@@ -128,12 +128,17 @@ cmp.setup.cmdline(':', {
         })
 })
 
---
--- lsp servers
 
+-- ===! lsp servers !===
+
+-- python
 lspconfig.pyright.setup({
     on_attach = on_attach,
     flags = lsp_flags,
 })
 
-
+-- c, c++
+lspconfig.clangd.setup({
+        on_attach = on_attach,
+        flags = lsp_flags,
+})
