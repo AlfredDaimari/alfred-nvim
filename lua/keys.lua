@@ -33,6 +33,9 @@ map('n', '<M-l>',     '<cmd>vertical resize +2<CR>', {silent = true})
 map('n', '<M-j>',     '<cmd>resize +2<CR>', {silent = true})
 map('n', '<M-k>',     '<cmd>resize -2<CR>', {silent = true})
 
+-- Goto previous Buffer
+map('n', '<Leader><Leader>',    '<C-^>', default_opts)
+
 -- For file searching at crtl + p
 
 map('n', '<C-P>', "<cmd>lua require('fzf-lua').files()<CR>",
