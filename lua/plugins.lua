@@ -74,6 +74,7 @@ return packer.startup(
                         requires = { 
                                 'kyazdani42/nvim-web-devicons' 
                         },
+                        config = function() require("plugins.fzflua") end
                 }
 
                 use {
